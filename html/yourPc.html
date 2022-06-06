@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu PC - TP Especial 2022</title>
+    <link rel="shortcut icon" href="../images/GPU Icon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+
+    <header>
+        <nav>
+            <div class="navbarIcon">
+                <a href="index.html"><img src="../images/GPU Icon.svg" alt="GPU Icon"></a>
+            </div>
+            <ul class="navbarButtons">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nvidia.html">Nvidia</a></li>
+                <li><a href="amd.html">AMD</a></li>
+                <li><a href="intel.html">Intel</a></li>
+                <li><a href="yourPc.html" class="active">Tu PC</a></li>
+            </ul>
+            <div class="navbarIcon">
+                <img class="navbarMenu" src="../images/Navmenu Icon.svg" alt="Phone menu">
+            </div>
+        </nav>
+    </header>
+
+    <!-- Body -->
+
+    <section>
+        <h1 class="indexTitle">¿Cuál es tu PC con el que disfrutás todos los días?</h1>
+
+        <form class="pcForm">
+            <p>Al enviar el formulario se creará una tabla con los datos ingresados por vos</p>
+            <div>
+                <input id="CPU" type="text" value="" placeholder="Escribe el modelo de tu CPU aquí">
+                <input id="Mother" type="text" value="" placeholder="Escribe el modelo de tu motherboard aquí">
+                <input id="GPU" type="text" value="" placeholder="Escribe el modelo de tu GPU aquí">
+                <input id="PowerSupply" type="text" value="" placeholder="Escribe el modelo de tu fuente aquí">
+            </div>
+            <h4>Captcha</h4>
+            <div>
+                <div class="captcha">
+                    <img src="../images/Captcha background.jpg" alt="Captcha">
+                    <p id="captchaText"></p>
+                </div>
+                <div>
+                    <input id="captchaInsert" type="text" value="" placeholder="¿Qué dice el captcha?">
+                </div>
+            </div>
+
+            <p id="captchaVerification"></p>
+    
+            <input type="submit" value="Enviar" class="formButton">
+        </form>
+        </section>
+
+    <!-- Footer -->
+
+    <footer>
+        <p>
+            El trabajo fue desarrollado por Esteban Orellano y Gonzalo Lucio
+        </p>
+    </footer>
+
+    <script src="../javascript/script.js"></script>
+</body>
+</html>

@@ -121,7 +121,7 @@ b{
     /* PC */
 
     @media only screen and (min-width: 768px) {
-        section{
+        #indexBody{
             padding: 3% 0;
         }
         .bodyGridMainIndex{
@@ -171,6 +171,151 @@ b{
         }
         
     }
+
+/* Body secondary */
+
+    /* Celular */
+
+    .bodyGridMainSecondary{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-column-gap: 4%;
+        align-items: center;
+        margin: 0 3%;
+    }
+    .bodyGridMainSecondary p{
+        font-size: 0.9em;
+    }
+    .bodyGridSecondSecondary{
+        display: grid;
+        margin: 5% 0;
+    }
+    .bodyGridSecondSecondary hgroup{
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+        grid-template-rows: repeat(2,1fr);
+        align-items: center;
+    }
+    .bodyGridSecondSecondary hgroup p{
+        grid-column: 1/3;
+        text-align: center;
+        margin: 2% 3%;
+    }
+    .bodyGridSecondSecondary hgroup ul{
+        text-align: center;
+        list-style: none;
+    }
+    .bodyTableSecondary p{
+        text-align: center;
+        margin: 2% 3%;
+    }
+    .bodyTableSecondary table{
+        margin: 2% auto;
+    }
+    .bodyTableSecondary table td{
+        width: 70%;
+        border: 1px solid white;
+        text-align: center;
+        padding: 1%;
+    }
+
+    /* PC */
+
+    @media only screen and (min-width: 768px) {
+        .bodyGridMainSecondary{
+            grid-template-columns: 1fr;
+            grid-column-gap: 0;
+        }
+        .bodyGridMainSecondary img{
+            width: 40%;
+            margin: 0 auto;
+        }
+        .bodyGridMainSecondary p{
+            font-size: 1em;
+            text-align: center;
+            margin: 2% 5%;
+        }
+        .bodyGridSecondSecondary{
+            grid-template-columns: repeat(2,1fr);
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+    }
+
+/* Captcha */
+
+    /* Celular */
+   
+    .pcForm{
+        display: grid;
+        justify-content: center;
+        width: 70%;
+        margin: 0 auto;
+    }
+    .pcForm p{
+        text-align: center;
+    }
+    .pcForm input{
+        width: 100%;
+        margin: 2% auto;
+        padding: 2%;
+        background-color: rgb(36, 36, 36);
+        border: 3px solid rgb(150, 0, 150);
+        border-radius: 15px;
+    }
+    .pcForm input::placeholder{
+        color: rgb(185, 185, 185);
+    }
+    .pcForm .formButton{
+        width: 30%;
+        margin-top: 5%;
+        cursor: pointer;
+    }
+    .pcForm h4{
+        margin: 7%;
+        text-align: center;
+    }
+    .captcha{
+        position: relative;
+        width: auto;
+    }
+    #captchaText{
+        position: absolute;
+        top: 50%;
+        left: 53%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 300%;
+        text-align: center;
+        letter-spacing: 1.7rem;
+        user-select: none;
+    }
+    #captchaVerification{
+        text-align: center;
+        transition: 0.3s;
+        visibility: hidden;
+        margin: 3%;
+    }
+
+
+    /* PC */
+
+    @media only screen and (min-width: 1280px) {
+        .pcForm{
+            width: 30%;
+        }
+        .pcForm input{
+            width: 100%;
+            margin: 3% auto;
+            padding: 3%;
+        }
+        .pcForm p{
+            margin: auto 5%;
+        }
+
+    }
+
+
 /* Footer */
 
 footer{
@@ -178,6 +323,7 @@ footer{
     align-items: center;
     justify-content: center;
     padding: 50px;
+    margin-top: 15%;
 }
 footer p{
     text-align: center;
@@ -188,15 +334,7 @@ footer p{
 
 
 
-/* td{
-    width: 70%;
-    border: 1px solid white;
-    text-align: center;
-    padding: 1%;
-}
-table{
-    margin: 2% auto;
-}
+/* 
 .itemCenter{
     text-align: center;
     margin: auto;
@@ -230,51 +368,4 @@ table{
     justify-content: space-around;
     list-style-position: inside;
 }
-.pcForm{
-    width: 20%;
-}
-.pcForm input{
-    width: 90%;
-    margin: 3%;
-    padding: 3%;
-    background-color: rgb(36, 36, 36);
-    border: 3px solid rgb(150, 0, 150);
-    border-radius: 15px;
-}
-.pcForm input::placeholder{
-    color: rgb(185, 185, 185);
-}
-.pcForm .formButton{
-    width: 30%;
-    margin-top: 8%;
-    cursor: pointer;
-}
-.captcha h4{
-    margin: 5%;
-}
-form div .bodyTitlePadding{
-    margin: 4%;
-}
-.captcha{
-    position: relative;
-}
-#captchaText{
-    position: absolute;
-    top: 50%;
-    left: 54%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    font-size: 2.5rem;
-    text-align: center;
-    letter-spacing: 30px;
-    user-select: none;
-}
-#captchaVerification{
-    display: none;
-    margin: 3%;
-}
-footer{
-    background-color:rgb(36, 36, 36);
-    padding: 2%;
-    margin-top: 2%;
-} */
+ */
