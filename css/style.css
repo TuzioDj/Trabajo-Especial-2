@@ -209,14 +209,18 @@ b{
         text-align: center;
         margin: 2% 3%;
     }
-    .bodyTableSecondary table{
+    .bodyTableSecondary table,.formTable{
         margin: 2% auto;
+        width: 70%;
     }
-    .bodyTableSecondary table td{
+    .bodyTableSecondary table td,th, .formTable td,th{
         width: 70%;
         border: 1px solid white;
         text-align: center;
         padding: 1%;
+    }
+    .formTable td,th{
+        width: 25%;
     }
 
     /* PC */
@@ -255,7 +259,7 @@ b{
     .pcForm p{
         text-align: center;
     }
-    .pcForm input{
+    .pcForm input,button{
         width: 100%;
         margin: 2% auto;
         padding: 2%;
@@ -267,7 +271,7 @@ b{
         color: rgb(185, 185, 185);
     }
     .pcForm .formButton{
-        width: 30%;
+        max-width: 40%;
         margin-top: 5%;
         cursor: pointer;
     }
@@ -292,7 +296,7 @@ b{
     }
     #captchaVerification{
         text-align: center;
-        transition: 0.3s;
+        transition: 0.2s;
         visibility: hidden;
         margin: 3%;
     }
@@ -311,6 +315,9 @@ b{
         }
         .pcForm p{
             margin: auto 5%;
+        }
+        #captchaText{
+            left: 47%;
         }
 
     }
