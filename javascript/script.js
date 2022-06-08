@@ -95,11 +95,9 @@ function displayMenu(){
                                 "<td>" + newPC.GPU + "</td>" + 
                                 "<td>" + newPC.Fuente + "</td>" +
                             "</tr>";
-        console.log(PC);
     }
     function createItem(){
         captchaState = captchaVerification();
-        console.log(captchaState);
         if(captchaState == true){
             sendInfoAndCreateTable();
             cleanInputs();
@@ -111,8 +109,8 @@ function displayMenu(){
             for (let i = 0; i < 3; i++) {
                 sendInfoAndCreateTable()  
             }
+            cleanInputs();
         }
-        cleanInputs();
     }
     function cleanAllItems(){
         while(PC.length > 0){
@@ -124,7 +122,6 @@ function displayMenu(){
         if(PC.length > 0){
             lastItem.remove();
             PC.splice(PC.length-1)
-            console.log("Item eliminado: " + PC);
         }
     }
     function cleanInputs(){
