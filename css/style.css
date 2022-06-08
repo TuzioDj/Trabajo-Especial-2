@@ -21,7 +21,6 @@ b{
     /* Celular */
     
     nav{
-        width: 100%;
         height: 100px;
         background-color: rgb(36, 36, 36);
         display: flex;
@@ -36,60 +35,30 @@ b{
     .navbarButtons{
         position: fixed;
         top: 100px;
+        list-style: none;
         text-align: center;
         align-items: center;
         width: 100%;
         height: 0;
+        transition: 0.5s;
     }
     nav ul li{
         opacity: 0;
         visibility: hidden;
         margin: 0 0;
-    }
-    nav ul{
-        list-style: none;
-        align-items: center;
+        transition: 0.3s;
     }
     nav ul li a:hover, .active {
         color: rgb(255, 0, 255)
     }
     .liAfter{
-        transition: 0.5s;
         visibility: visible;
         margin: 5% 0;
         opacity: 1;
-
     }
     .navbarButtonsAfter{
-        transition: 0.5s;
         background-color: rgb(36, 36, 36);
         height: 100%;
-    }
-
-    /* PC */
-
-    @media only screen and (min-width: 768px) {
-        nav{
-            padding: 0 20%;
-        }
-        .navbarIcon{
-            margin: 0%;
-        }
-        .navbarMenu{
-            display: none;
-        }
-        .navbarButtons{
-            position: relative;
-            top: 0;
-            margin-bottom: 20px;
-        }
-        nav ul li{
-            display: inline-block;
-            transition: none;
-            opacity: 1;
-            visibility: visible;
-            margin-left: 15px;
-        }
     }
 
 /* Body */
@@ -117,61 +86,6 @@ b{
         text-align: center;
         margin: 4%;
     }
-
-    /* PC */
-
-    @media only screen and (min-width: 768px) {
-        #indexBody{
-            padding: 3% 0;
-        }
-        .bodyGridMainIndex{
-            grid-template-columns: repeat(2,auto);
-            align-items: center;
-            margin: 0 4% 7% 4%;
-        }
-        .bodyGridMainIndex p{
-            text-align: left;
-            margin: 0 0 0 7%;
-            padding: 3%;
-        }
-        .bodyGridMainIndex img{
-            padding: 3%;
-        }
-
-        .bodyGridSecond{
-            grid-template-columns: repeat(3,1fr);
-            grid-template-rows: 1fr auto;
-            margin: 0 4% 7% 4%;
-            align-items: flex-start;
-        }
-        .bodyGridSecond p{
-            text-align: center;
-            margin-top: 4%;
-        }
-        .item1{
-            grid-column: 1;
-        }
-        .item2{
-            grid-column: 1;
-            grid-row: 2;
-        }
-        .item3{
-            grid-column: 2;
-        }
-        .item4{
-            grid-column: 2;
-            grid-row: 2;
-        }
-        .item5{
-            grid-column: 3;
-        }
-        .item6{
-            grid-column: 3;
-            grid-row: 2;
-        }
-        
-    }
-
 /* Body secondary */
 
     /* Celular */
@@ -222,34 +136,6 @@ b{
     .formTable td,th{
         width: 25%;
     }
-
-    /* PC */
-
-    @media only screen and (min-width: 768px) {
-        .bodyGridMainSecondary{
-            grid-template-columns: 1fr;
-            grid-column-gap: 0;
-        }
-        .bodyGridMainSecondary img{
-            width: 40%;
-            margin: 0 auto;
-        }
-        .bodyGridMainSecondary p{
-            font-size: 1em;
-            text-align: center;
-            margin: 2% 5%;
-        }
-        .bodyGridSecondSecondary{
-            grid-template-columns: repeat(2,1fr);
-            margin-left: 5%;
-            margin-right: 5%;
-        }
-        .bodyTableSecondary table,.formTable{
-            margin: 2% auto;
-            width: 70%;
-        }    
-    }
-
 /* Captcha */
 
     /* Celular */
@@ -305,6 +191,122 @@ b{
         margin: 3%;
     }
 
+/* Barra de navegacion */
+
+    /* PC */
+
+    @media only screen and (min-width: 768px) {
+        nav{
+            padding: 0 20%;
+        }
+        .navbarIcon{
+            margin: 0%;
+        }
+        .navbarMenu{
+            display: none;
+        }
+        .navbarButtons{
+            position: relative;
+            top: 0;
+            margin-bottom: 20px;
+        }
+        nav ul li{
+            display: inline-block;
+            transition: none;
+            opacity: 1;
+            visibility: visible;
+            margin-left: 7px;
+            margin-right: 7px;
+        }
+        .navbarButtonsAfter{
+            background-color: rgb(36, 36, 36);
+            height: 0;
+        }    
+        .liAfter{
+            margin: 0 7px;
+        }
+    
+/* Body */
+
+    /* PC */
+
+        #indexBody{
+            padding: 3% 0;
+        }
+        .bodyGridMainIndex{
+            grid-template-columns: repeat(2,auto);
+            align-items: center;
+            margin: 0 4% 7% 4%;
+        }
+        .bodyGridMainIndex p{
+            text-align: left;
+            margin: 0 0 0 7%;
+            padding: 3%;
+        }
+        .bodyGridMainIndex img{
+            padding: 3%;
+        }
+
+        .bodyGridSecond{
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: 1fr auto;
+            margin: 0 4% 7% 4%;
+            align-items: flex-start;
+        }
+        .bodyGridSecond p{
+            text-align: center;
+            margin-top: 4%;
+        }
+        .item1{
+            grid-column: 1;
+        }
+        .item2{
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .item3{
+            grid-column: 2;
+        }
+        .item4{
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .item5{
+            grid-column: 3;
+        }
+        .item6{
+            grid-column: 3;
+            grid-row: 2;
+        }
+/* Body Secundario */
+    
+    /* PC */
+
+        .bodyGridMainSecondary{
+            grid-template-columns: 1fr;
+            grid-column-gap: 0;
+        }
+        .bodyGridMainSecondary img{
+            width: 40%;
+            margin: 0 auto;
+        }
+        .bodyGridMainSecondary p{
+            font-size: 1em;
+            text-align: center;
+            margin: 2% 5%;
+        }
+        .bodyGridSecondSecondary{
+            grid-template-columns: repeat(2,1fr);
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        .bodyTableSecondary table,.formTable{
+            margin: 2% auto;
+            width: 70%;
+        }    
+    }
+
+/* Formulario */
 
     /* PC */
 
@@ -334,7 +336,7 @@ footer{
     align-items: center;
     justify-content: center;
     padding: 50px;
-    margin-top: 15%;
+    margin-top: 5%;
 }
 footer p{
     text-align: center;
