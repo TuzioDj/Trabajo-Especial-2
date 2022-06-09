@@ -20,9 +20,11 @@ b{
 
     /* Celular */
     
+    header{
+        background-color: rgb(36, 36, 36);
+    }
     nav{
         height: 100px;
-        background-color: rgb(36, 36, 36);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -33,14 +35,13 @@ b{
         margin: 0 5%;
     }
     .navbarButtons{
-        position: fixed;
+        position: absolute;
         top: 100px;
         list-style: none;
         text-align: center;
-        align-items: center;
         width: 100%;
         height: 0;
-        transition: 0.5s;
+        transition: 0.3s;
     }
     nav ul li{
         opacity: 0;
@@ -58,7 +59,8 @@ b{
     }
     .navbarButtonsAfter{
         background-color: rgb(36, 36, 36);
-        height: 100%;
+        height: auto;
+        z-index: 1;
     }
 
 /* Body */
@@ -77,10 +79,13 @@ b{
     .bodyGridSecond{
         margin: 0 2%;
         display: grid;
-        grid-template-columns: repeat(2,1fr);
-        grid-template-rows: repeat(3,1fr);
+        grid-template-columns: auto;
+        grid-template-rows: auto;
         grid-column-gap: 5%;
         align-items: center;
+    }
+    .bodyGridSecond p{
+        text-align: center;
     }
     .indexTitle{
         text-align: center;
@@ -92,13 +97,11 @@ b{
 
     .bodyGridMainSecondary{
         display: grid;
-        grid-template-columns: repeat(2,1fr);
-        grid-column-gap: 4%;
-        align-items: center;
         margin: 0 3%;
     }
     .bodyGridMainSecondary p{
         font-size: 0.9em;
+        text-align: center;
     }
     .bodyGridSecondSecondary{
         display: grid;
@@ -107,7 +110,7 @@ b{
     .bodyGridSecondSecondary hgroup{
         display: grid;
         grid-template-columns: repeat(2,auto);
-        grid-template-rows: repeat(2,1fr);
+        grid-template-rows: repeat(2,auto);
         align-items: center;
     }
     .bodyGridSecondSecondary hgroup p{
@@ -143,7 +146,7 @@ b{
     .pcForm{
         display: grid;
         justify-content: center;
-        width: 70%;
+        width: 80%;
         margin: 0 auto;
     }
     .pcForm p{
@@ -179,9 +182,9 @@ b{
         left: 53%;
         transform: translate(-50%, -50%);
         width: 100%;
-        font-size: 300%;
+        font-size: 7vw;
         text-align: center;
-        letter-spacing: 1.7rem;
+        letter-spacing: 5vw;
         user-select: none;
     }
     #captchaVerification{
@@ -208,7 +211,7 @@ b{
         .navbarButtons{
             position: relative;
             top: 0;
-            margin-bottom: 20px;
+            height: auto;
         }
         nav ul li{
             display: inline-block;
@@ -220,13 +223,13 @@ b{
         }
         .navbarButtonsAfter{
             background-color: rgb(36, 36, 36);
-            height: 0;
+            height: auto;
         }    
         .liAfter{
             margin: 0 7px;
         }
     
-/* Body */
+/* Body Index*/
 
     /* PC */
 
@@ -254,7 +257,6 @@ b{
             align-items: flex-start;
         }
         .bodyGridSecond p{
-            text-align: center;
             margin-top: 4%;
         }
         .item1{
@@ -284,7 +286,6 @@ b{
 
         .bodyGridMainSecondary{
             grid-template-columns: 1fr;
-            grid-column-gap: 0;
         }
         .bodyGridMainSecondary img{
             width: 40%;
@@ -292,7 +293,6 @@ b{
         }
         .bodyGridMainSecondary p{
             font-size: 1em;
-            text-align: center;
             margin: 2% 5%;
         }
         .bodyGridSecondSecondary{
@@ -306,7 +306,7 @@ b{
         }    
     }
 
-/* Formulario */
+/* Captcha */
 
     /* PC */
 
@@ -324,6 +324,8 @@ b{
         }
         #captchaText{
             left: 47%;
+            font-size: 3vw;
+            letter-spacing: 2vw;
         }
 
     }
