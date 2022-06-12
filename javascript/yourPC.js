@@ -1,67 +1,41 @@
-// NAVBAR RESPONSIVE
-
-document.querySelector(".navbarMenu").addEventListener('click', displayMenu);
-
-function displayMenu(){
-    document.querySelector(".navbarButtons").classList.toggle("navbarButtonsAfter");
-    let navbarLink = document.querySelectorAll("nav ul li");
-
-    for (let i = 0; i < navbarLink.length; i++) {
-        navbarLink[i].classList.toggle("liAfter");
-    }
-
-}
-
 // CAPTCHA
+document.addEventListener('DOMContentLoaded', startScript)
+function startScript(){
 
     let captchaCode = document.querySelector("#captchaText"),
-    captchaInsert = document.querySelector("#captchaInsert"),
-    captchaBtn = document.querySelector("#enviar"),
-    captchaVerificated = document.querySelector("#captchaVerification"),
-    cpuInsert = document.querySelector("#CPU"),
-    motherInsert = document.querySelector("#Mother"),
-    gpuInsert = document.querySelector("#GPU"),
-    powersupplyInsert = document.querySelector("#PowerSupply"),
-    captchaInserted = captchaInsert.value;
+    captchaVerificated = document.querySelector("#captchaVerification");
 
     let characteres =  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
                         'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
                         'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                         't', 'u', 'v', 'w', 'x', 'y', 'z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    
     function newCaptcha(){
         for (let i = 0; i < 6; i++) {
             let randomCharacter = characteres[Math.floor(Math.random() * characteres.length)];
             captchaCode.textContent += randomCharacter;
         }
     }
+    
     function captchaVerification(){
         captchaVerificated.style.visibility = "visible";
-        if (cpuInsert.value == "") {
+        let firstInput = 0;
+        while(firstInput < (inputs.length - 1)){
+            if(inputs[firstInput].value == ""){
             captchaVerificated.style.color = "rgb(255, 0, 0)";
-            captchaVerificated.textContent = "Primero llená el campo del CPU"
+            captchaVerificated.textContent = "Primero llená el campo: " + inputs[firstInput].name;
             return false;
+            }
+            else{
+                firstInput++
+            }
         }
-        else if (motherInsert.value == "") {
-            captchaVerificated.style.color = "rgb(255, 0, 0)";
-            captchaVerificated.textContent = "Primero llená el campo de la Motherboard"
-            return false;
-        }
-        else if (gpuInsert.value == "") {
-            captchaVerificated.style.color = "rgb(255, 0, 0)";
-            captchaVerificated.textContent = "Primero llená el campo de la GPU"
-            return false;
-        }
-        else if (powersupplyInsert.value == "") {
-            captchaVerificated.style.color = "rgb(255, 0, 0)";
-            captchaVerificated.textContent = "Primero llená el campo de la Fuente de poder"
-            return false;
-        }
-        else if(captchaInsert.value != captchaCode.textContent){
+        if(inputs[firstInput].value != captchaCode.textContent){
             captchaVerificated.style.color = "rgb(255, 0, 0)";
             captchaVerificated.textContent = "Sos un robot >:("
             return false;
         }
-        else if(captchaInsert.value == captchaCode.textContent){
+        else if(inputs[firstInput].value == captchaCode.textContent){
             captchaVerificated.style.color = "rgb(0, 255, 0)";
             captchaVerificated.textContent = "Felicidades!, no sos un robot :D"
             return true;
@@ -70,23 +44,38 @@ function displayMenu(){
 
 // TABLA Y DATOS
     
+    let PC = [],
     table = document.querySelector(".formTable"),
-    enviar3 = document.querySelector("#enviar3"),
-    borrarUno = document.querySelector("#borrarUno");
-    borrarTodo = document.querySelector("#borrarTodo");
+    inputs = document.querySelectorAll('.inputs input'),
+    buttons = document.querySelectorAll("#buttons input");
 
-    captchaBtn.addEventListener('click',createItem);
-    enviar3.addEventListener('click', create3Items);
-    borrarUno.addEventListener('click',cleanItem);
-    borrarTodo.addEventListener('click',cleanAllItems);
+    buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            switch(e.target.name){
+                case "enviar":
+                    createItem();
+                    break;
+                case "enviar3":
+                    create3Items();
+                    break;
+                case "borrarUno":
+                    cleanItem();
+                    break;
+                case "borrarTodo":
+                    cleanAllItems();
+                    break;
+            }
+        })
+    });
+               
 
-    let PC = [];
+
     function sendInfoAndCreateTable(){
         let newPC ={
-            "CPU": cpuInsert.value,
-            "Mother": motherInsert.value,
-            "GPU": gpuInsert.value,
-            "Fuente": powersupplyInsert.value
+            "CPU": inputs[0].value,
+            "Mother": inputs[1].value,
+            "GPU": inputs[2].value,
+            "Fuente": inputs[3].value
         }
         PC.push(newPC);
         table.innerHTML +=  "<tr id=" + "item" + PC.length + 
@@ -96,6 +85,7 @@ function displayMenu(){
                                 "<td>" + newPC.Fuente + "</td>" +
                             "</tr>";
     }
+
     function createItem(){
         captchaState = captchaVerification();
         if(captchaState == true){
@@ -103,6 +93,7 @@ function displayMenu(){
             cleanInputs();
         }
     }
+
     function create3Items(){
         captchaState = captchaVerification();
         if(captchaState == true){
@@ -112,11 +103,13 @@ function displayMenu(){
             cleanInputs();
         }
     }
+
     function cleanAllItems(){
         while(PC.length > 0){
             cleanItem();
         }
     }
+
     function cleanItem(){
         let lastItem = document.querySelector("#item" + PC.length)
         if(PC.length > 0){
@@ -124,10 +117,12 @@ function displayMenu(){
             PC.splice(PC.length-1)
         }
     }
+
     function cleanInputs(){
-        motherInsert.value="";
-        cpuInsert.value="";
-        gpuInsert.value="";
-        powersupplyInsert.value="";
+        for (let i = 0; i < (inputs.length - 1); i++) {
+            inputs[i].value = ""
+        }
     }
+    
     newCaptcha();
+}
