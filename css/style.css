@@ -140,7 +140,15 @@ h1{
         padding: 1%;
     }
     .formTable td,th{
-        width: 25%;
+        width: 20%;
+    }
+    .buttonTable{
+        background-color: rgb(36, 36, 36);
+        border: 3px solid rgb(150, 0, 150);
+        border-radius: 15px;
+        padding: 3% 4%;
+        margin:3px;
+        cursor: pointer;
     }
 
 /* Captcha */
@@ -309,7 +317,7 @@ h1{
         }
         .secondary_bodyTable table,.formTable{
             margin: 2% auto;
-            width: 70%;
+            width: 80%;
         }    
     }
 
@@ -334,9 +342,8 @@ h1{
             font-size: 3vw;
             letter-spacing: 2vw;
         }
-
     }
-
+    
 
 /* Footer */
 
