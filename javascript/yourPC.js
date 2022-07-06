@@ -1,6 +1,6 @@
 "use strict";
-// document.addEventListener('DOMContentLoaded', startScript)
-// function startScript(){
+document.addEventListener('DOMContentLoaded', startScript)
+function startScript(){
 const captchaCode = document.querySelector("#captchaText"),
     captchaVerificated = document.querySelector("#captchaVerification"),
     table = document.querySelector(".formTable"),
@@ -57,7 +57,12 @@ async function obtainLastItem(){
         let res = await fetch(url);
         let PC = await res.json();
         if (res.ok) {
-            lastItem = PC[PC.length-1].id;
+            if(PC.length == 0){
+                lastItem = 0
+            }
+            else{
+                lastItem = PC[PC.length-1].id;
+            }
         }
         else
             table.innerHTML = "<h1>Se ha perdido la conexion con el servidor REST</h1>";
@@ -108,19 +113,38 @@ async function createInitialTable() {
     };
 }
 function createTable(PC) {
-    table.innerHTML += "<tr id=" + "item" + PC.id +
-        "><td>" + PC.CPU + "</td>" +
-        "<td>" + PC.Mother + "</td>" +
-        "<td>" + PC.GPU + "</td>" +
-        "<td>" + PC.Fuente + "</td>" +
-        `<td><input class=buttonTable type=button value=Editar id=editarElemento${PC.id}><input class=buttonTable type=button value=Eliminar id=eliminarElemento${PC.id}></td>` +
-        "</tr>";
-        document.querySelector(`#editarElemento${PC.id}`).addEventListener('click', ()=>{
-            replaceElement(PC.id);
-        });
-        document.querySelector(`#eliminarElemento${PC.id}`).addEventListener('click', ()=>{
-            deleteElement(PC.id);
-        });
+    let editButton = document.createElement("input");
+    editButton.type = "button";
+    editButton.value = "Editar";
+    editButton.classList= "buttonTable";
+    
+    let deleteButton = document.createElement("input");
+    deleteButton.type = "button";
+    deleteButton.value = "Eliminar";
+    deleteButton.classList= "buttonTable";
+    
+    let newRow = table.insertRow(-1);
+    newRow.id = `item${PC.id}`
+    
+    let newCell = newRow.insertCell(0);
+    newCell.textContent = PC.CPU;
+    newCell = newRow.insertCell(1);
+    newCell.textContent = PC.Mother;
+    newCell = newRow.insertCell(2);
+    newCell.textContent = PC.GPU;
+    newCell = newRow.insertCell(3);
+    newCell.textContent = PC.Fuente;
+    
+    let actionCell = newRow.insertCell(4);
+    actionCell.appendChild(editButton);
+    actionCell.appendChild(deleteButton);
+
+    editButton.addEventListener('click', ()=>{
+        replaceElement(PC.id);
+    });
+    deleteButton.addEventListener('click', ()=>{
+        deleteElement(PC.id);
+    });
 }
 
 function createItem() {
@@ -131,27 +155,11 @@ function createItem() {
         cleanInputs();
     }
 }
-
-function create3Items() {
-    let captchaState = captchaVerification();
-    if (captchaState == true) {
-        let i = 0;
-            let PC = createObject();
-            setInterval(() => {
-                if(i<3){
-                    sendElement(PC);
-                    i++
-                }
-            }, 50);
-        cleanInputs();
-    }
-}
-
-function replaceElement(number) {
+function replaceElement(id) {
     let captchaState = captchaVerification();
     if (captchaState == true) {
         let PC = createObject();
-        editElement(PC, number);
+        editElement(PC, id);
         cleanInputs();
     }
 }
@@ -174,10 +182,11 @@ async function sendElement(object) {
             "headers": { "Content-type": "application/json" },
             "body": JSON.stringify(object)
         });
+        console.log(object.id);
         if (res.status == 201) {
             console.log("Nueva PC creada!");
             createTable(object);
-            obtainLastItem();
+            lastItem++;
         }
     }
     catch (error) {
@@ -201,28 +210,29 @@ async function deleteElement(number) {
         console.log(error);
     }
 }
-async function editElement(object, number) {
+async function editElement(object, id) {
     try {
-        let res = await fetch(`${url}/${number}`, {
+        let res = await fetch(`${url}/${id}`, {
             "method": "PUT",
             "headers": { "Content-type": "application/json" },
             "body": JSON.stringify(object)
         });
         if (res.status == 200) {
             console.log("Nueva PC modificada!");
-            let row = document.querySelector(`#item${number}`);
-            row.innerHTML = "<td>" + object.CPU + "</td>" +
-                            "<td>" + object.Mother + "</td>" +
-                            "<td>" + object.GPU + "</td>" +
-                            "<td>" + object.Fuente + "</td>" +
-                            `<td><input class=buttonTable type=button value=Editar id=editarElemento${number}>
-                                 <input class=buttonTable type=button value=Eliminar id=eliminarElemento${number}>  
-                             </td>`;
-            document.querySelector(`#editarElemento${number}`).addEventListener('click', ()=>{
-                replaceElement(number);
+            let row = document.querySelector(`#item${id}`);
+            row.innerHTML =`<td> ${object.CPU} </td>
+                            <td> ${object.Mother} </td>
+                            <td> ${object.GPU} </td>
+                            <td> ${object.Fuente} </td>
+                            <td>
+                                <input class=buttonTable type=button value=Editar id=editarElemento${id}>
+                                <input class=buttonTable type=button value=Eliminar id=eliminarElemento${id}>  
+                            </td>`;
+            document.querySelector(`#editarElemento${id}`).addEventListener('click', ()=>{
+                replaceElement(id);
             });
-            document.querySelector(`#eliminarElemento${number}`).addEventListener('click', ()=>{
-                deleteElement(number);
+            document.querySelector(`#eliminarElemento${id}`).addEventListener('click', ()=>{
+                deleteElement(id);
             });
         }
     }
@@ -238,4 +248,4 @@ function cleanInputs() {
 }
 
 newCaptcha();
-// }
+}
