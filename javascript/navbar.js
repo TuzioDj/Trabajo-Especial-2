@@ -1,3 +1,4 @@
+"use strict";
 // NAVBAR RESPONSIVE
 document.addEventListener('DOMContentLoaded', displayNavbar)
 function displayNavbar(){
