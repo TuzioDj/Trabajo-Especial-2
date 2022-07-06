@@ -1,5 +1,5 @@
 "use strict";
-document.addEventListener('DOMContentLoaded', startScript)
+document.addEventListener('DOMContentLoaded', startScript);
 function startScript(){
 const captchaCode = document.querySelector("#captchaText"),
     captchaVerificated = document.querySelector("#captchaVerification"),
@@ -78,16 +78,6 @@ buttons.forEach((button) => {
         switch (e.target.name) {
             case "enviar":
                 createItem();
-                break;
-            case "enviar3":
-                create3Items();
-                break;
-            case "borrarUno":
-                deleteElement();
-                break;
-            case "borrarTodo":
-                cleanAllItems();
-                break;
         }
     })
 });
@@ -182,7 +172,6 @@ async function sendElement(object) {
             "headers": { "Content-type": "application/json" },
             "body": JSON.stringify(object)
         });
-        console.log(object.id);
         if (res.status == 201) {
             console.log("Nueva PC creada!");
             createTable(object);
